@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="36" fill="#FFF9F0"/>
+  <circle cx="180" cy="140" r="180" fill="#FFD54F" fill-opacity="0.35"/>
+  <circle cx="1020" cy="120" r="160" fill="#FCE4EC"/>
+  <circle cx="960" cy="520" r="220" fill="#E8EAF6"/>
+  <text x="80" y="190" fill="#5C6BC0" font-size="44" font-family="sans-serif" font-weight="700">MBTI TRAVEL TYPE</text>
+  <text x="80" y="310" fill="#1A1A2E" font-size="110" font-family="sans-serif" font-weight="900">추구미 여행</text>
+  <text x="80" y="420" fill="#FF7043" font-size="60" font-family="sans-serif" font-weight="800">되고 싶은 나의 여행자 유형</text>
+  <text x="80" y="520" fill="#1A1A2E" font-size="38" font-family="sans-serif">12개 여행 상황으로 알아보는 추구미 MBTI</text>
+</svg>
