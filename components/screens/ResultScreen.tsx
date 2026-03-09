@@ -1,12 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { AdBanner } from '@/components/AdBanner';
 import { compareMbti, getMatchMessage, getMatchRate, getRelevantGrowthTips } from '@/lib/calculate';
 import { LETTER_COLORS } from '@/lib/constants';
+import { getResultTypePath } from '@/lib/site';
 import { generateStoryExportImages, StoryExportImage } from '@/lib/story-export';
 import { GrowthTip, ResultType } from '@/lib/types';
 
@@ -106,16 +108,18 @@ export function ResultScreen({
     () => resultType.description.split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean),
     [resultType],
   );
+  const resultTypePath = useMemo(() => getResultTypePath(chugumiMbti), [chugumiMbti]);
 
   const handleShare = async () => {
     const shareText = `나의 추구미 여행 MBTI는 ${chugumiMbti} ${resultType.title}! 실제 ${actualMbti}와 비교해봤어요.`;
+    const shareUrl = typeof window !== 'undefined' ? new URL(resultTypePath, window.location.origin).toString() : resultTypePath;
 
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
           title: '추구미 여행 MBTI',
           text: shareText,
-          url: window.location.href,
+          url: shareUrl,
         });
         return;
       } catch {
@@ -123,7 +127,7 @@ export function ResultScreen({
       }
     }
 
-    await navigator.clipboard.writeText(`${shareText}\n${window.location.href}`);
+    await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
     setShareState('copied');
     window.setTimeout(() => setShareState('idle'), 1800);
   };
@@ -336,6 +340,9 @@ export function ResultScreen({
 
       <div className="premium-card rounded-[38px] px-6 py-6">
         <div className="grid gap-3">
+          <Link href={resultTypePath} className="secondary-button rounded-[24px] px-5 py-4 text-center font-strong text-base">
+            이 유형 상세 보기
+          </Link>
           <button
             type="button"
             onClick={handleGenerateStories}
