@@ -45,9 +45,6 @@ export function StaticPageShell({
 
         <footer className="rounded-[28px] border border-white/70 bg-white/60 px-4 py-4 shadow-[0_18px_42px_rgba(20,67,130,0.08)] backdrop-blur-xl">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-[rgba(16,21,47,0.62)]">
-            <Link href="/type" className="transition hover:text-[var(--color-ink)]">
-              유형 모아보기
-            </Link>
             <Link href="/about" className="transition hover:text-[var(--color-ink)]">
               서비스 소개
             </Link>
