@@ -3,8 +3,6 @@ import localFont from 'next/font/local';
 import Script from 'next/script';
 
 import '@/app/globals.css';
-import { fetchIntroContentValue, parseCmsBoolean } from '@/lib/content';
-import { createSupabaseServerClient } from '@/lib/supabase';
 
 const a2jiDisplay = localFont({
   src: './fonts/a2ji-extrabold.woff2',
@@ -51,23 +49,11 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
   const kakaoJavascriptKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
-  const supabase = createSupabaseServerClient();
-  let adsEnabledValue = 'false';
-
-  if (supabase) {
-    try {
-      adsEnabledValue = await fetchIntroContentValue(supabase, 'adsEnabled');
-    } catch {
-      adsEnabledValue = 'false';
-    }
-  }
-
-  const adsEnabled = parseCmsBoolean(adsEnabledValue, false);
 
   return (
     <html lang="ko" className={`${a2jiDisplay.variable} ${a2jiStrong.variable} ${a2jiBody.variable}`}>
       <body className="font-body antialiased">
-        {adsenseClient && adsEnabled ? (
+        {adsenseClient ? (
           <Script
             id="adsense-script"
             async
