@@ -48,7 +48,6 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
-  const kakaoJavascriptKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
 
   return (
     <html lang="ko" className={`${a2jiDisplay.variable} ${a2jiStrong.variable} ${a2jiBody.variable}`}>
@@ -60,13 +59,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             strategy="afterInteractive"
             crossOrigin="anonymous"
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-          />
-        ) : null}
-        {kakaoJavascriptKey ? (
-          <Script
-            id="kakao-js-sdk"
-            src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.0/kakao.min.js"
-            strategy="afterInteractive"
           />
         ) : null}
         {children}

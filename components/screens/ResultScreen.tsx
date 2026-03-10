@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 
 import { AdBanner } from '@/components/AdBanner';
 import { compareMbti, getMatchMessage, getMatchRate, getRelevantGrowthTips } from '@/lib/calculate';
-import { isKakaoShareEnabled, shareResultToKakao } from '@/lib/kakao';
 import { LETTER_COLORS } from '@/lib/constants';
 import { getResultTypePath } from '@/lib/site';
 import { generateStoryExportImages, StoryExportImage } from '@/lib/story-export';
@@ -110,16 +109,21 @@ export function ResultScreen({
     [resultType],
   );
   const resultTypePath = useMemo(() => getResultTypePath(chugumiMbti), [chugumiMbti]);
-  const kakaoShareEnabled = isKakaoShareEnabled();
 
   const handleShare = async () => {
-    const shareText = `나의 추구미 여행 MBTI는 ${chugumiMbti} ${resultType.title}! 실제 ${actualMbti}와 비교해봤어요.`;
+    const shareTitle = `내 추구미 여행 MBTI는 ${chugumiMbti} ${resultType.title}`;
+    const shareText = [
+      `${shareTitle}`,
+      `${resultType.sub}`,
+      `실제 ${actualMbti} → 추구미 ${chugumiMbti}`,
+      '너도 여행에서 되고 싶은 캐릭터가 뭔지 확인해봐.',
+    ].join('\n');
     const shareUrl = typeof window !== 'undefined' ? new URL(resultTypePath, window.location.origin).toString() : resultTypePath;
 
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
-          title: '추구미 여행 MBTI',
+          title: shareTitle,
           text: shareText,
           url: shareUrl,
         });
@@ -132,18 +136,6 @@ export function ResultScreen({
     await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
     setShareState('copied');
     window.setTimeout(() => setShareState('idle'), 1800);
-  };
-
-  const handleKakaoShare = async () => {
-    const shared = shareResultToKakao({
-      actualMbti,
-      chugumiMbti,
-      resultType,
-    });
-
-    if (!shared) {
-      await handleShare();
-    }
   };
 
   const downloadImage = (url: string, fileName: string) => {
@@ -357,15 +349,6 @@ export function ResultScreen({
           <Link href={resultTypePath} className="secondary-button rounded-[24px] px-5 py-4 text-center font-strong text-base">
             이 유형 상세 보기
           </Link>
-          {kakaoShareEnabled ? (
-            <button
-              type="button"
-              onClick={handleKakaoShare}
-              className="rounded-[24px] bg-[#FEE500] px-5 py-4 font-strong text-base text-[#191919] transition hover:translate-y-[-1px]"
-            >
-              카카오톡으로 공유
-            </button>
-          ) : null}
           <button
             type="button"
             onClick={handleGenerateStories}
