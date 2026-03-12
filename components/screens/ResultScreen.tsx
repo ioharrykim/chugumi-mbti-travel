@@ -40,6 +40,47 @@ function HighlightCode({ code }: { code: string }) {
   );
 }
 
+function CharacterPortrait({
+  mbtiCode,
+  emoji,
+  title,
+}: {
+  mbtiCode: string;
+  emoji: string;
+  title: string;
+}) {
+  const [imageVisible, setImageVisible] = useState(true);
+  const imageSrc = `/characters/${mbtiCode.toLowerCase()}.png`;
+
+  return (
+    <div className="glass-card rounded-[30px] px-5 py-5">
+      <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.4)]">캐릭터 아트</p>
+      <div className="mt-4 flex flex-col items-center gap-4 text-center">
+        <div className="relative flex h-40 w-full max-w-[15rem] items-center justify-center overflow-hidden rounded-[28px] bg-[linear-gradient(180deg,rgba(85,182,255,0.08),rgba(255,255,255,0.78))] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
+          {imageVisible ? (
+            <Image
+              src={imageSrc}
+              alt={`${mbtiCode} ${title} 캐릭터`}
+              fill
+              unoptimized
+              sizes="240px"
+              className="object-contain p-3"
+              onError={() => setImageVisible(false)}
+            />
+          ) : (
+            <div className="flex h-24 w-24 items-center justify-center rounded-[26px] bg-white/86 text-6xl shadow-[0_18px_30px_rgba(16,21,47,0.08)]">
+              {emoji}
+            </div>
+          )}
+        </div>
+        <p className="type-caption text-[rgba(16,21,47,0.62)]">
+          나중에 `{mbtiCode.toLowerCase()}.png` 캐릭터 파일을 넣으면 이 자리가 자동으로 교체됩니다.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function PassportStamp() {
   return (
     <svg viewBox="0 0 120 120" className="stamp-in h-24 w-24 rotate-[-10deg] text-[rgba(85,182,255,0.76)]">
@@ -199,6 +240,8 @@ export function ResultScreen({
               </div>
             </div>
           </div>
+
+          <CharacterPortrait mbtiCode={chugumiMbti} emoji={resultType.emoji} title={resultType.title} />
 
           <HighlightCode code={chugumiMbti} />
 
