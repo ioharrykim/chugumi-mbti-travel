@@ -62,10 +62,10 @@ function ChoiceCard({
                 isRouteA ? 'text-[rgba(255,146,112,0.82)]' : 'text-[rgba(45,98,217,0.74)]'
               }`}
             >
-              route {marker}
+              선택지 {marker}
             </p>
             <p className="font-strong text-xs uppercase tracking-[0.2em] text-[rgba(16,21,47,0.34)]">
-              {selected ? 'picked' : isRouteA ? 'warm route' : 'cool route'}
+              {selected ? '선택 완료' : isRouteA ? 'A 타입' : 'B 타입'}
             </p>
           </div>
           <RichTextBlock
@@ -127,7 +127,7 @@ export function QuestionScreen({
               {question.emoji}
             </div>
             <div className="min-w-0">
-              <p className="section-kicker">Choose your fantasy self</p>
+              <p className="section-kicker">되고 싶은 여행자의 선택</p>
               <h2 className="mt-3 font-display text-[1.56rem] leading-[1.08] text-[var(--color-ink)] break-keep">
                 <RichTextBlock value={question.text} as="span" />
               </h2>

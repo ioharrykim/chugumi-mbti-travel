@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { StaticPageShell } from '@/components/ui/StaticPageShell';
+import { getPublicContactEmail } from '@/lib/public-config';
 
 export const metadata: Metadata = {
   title: '문의하기 | 추구미 여행 MBTI',
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || '배포 전 문의 이메일 설정 필요';
+  const contactEmail = getPublicContactEmail();
 
   return (
     <StaticPageShell
-      kicker="Contact"
+      kicker="운영 문의"
       title="문의하기"
       description="서비스 오류 제보, 문구 수정 요청, 제휴 및 운영 관련 문의를 받을 수 있는 페이지입니다. 배포 전에는 실제 운영용 이메일 주소를 반드시 연결해두는 편이 좋습니다."
     >

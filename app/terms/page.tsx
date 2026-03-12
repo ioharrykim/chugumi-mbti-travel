@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <StaticPageShell
-      kicker="Terms of Use"
+      kicker="서비스 약관"
       title="이용약관"
       description="본 약관은 추구미 여행 MBTI 서비스 이용 조건을 안내합니다. 실제 운영 버전에서는 사업자 정보, 연락처, 관할 등을 운영 형태에 맞게 최종 보완하는 것이 좋습니다."
     >
@@ -18,7 +18,7 @@ export default function TermsPage() {
         <section className="space-y-3">
           <h2 className="type-card-title text-[var(--color-ink)]">1. 서비스 성격</h2>
           <p className="type-body">
-            본 서비스는 मनोरंजन 및 정보 제공 목적의 MBTI 기반 콘텐츠입니다. 의학적, 심리학적 진단이나 전문 상담을
+            본 서비스는 재미와 정보 제공 목적의 MBTI 기반 콘텐츠입니다. 의학적, 심리학적 진단이나 전문 상담을
             대체하지 않습니다.
           </p>
         </section>

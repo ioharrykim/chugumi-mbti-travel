@@ -27,7 +27,7 @@ export function StaticPageShell({
                 className="h-12 w-auto max-w-[7rem] object-contain"
                 fallbackClassName="font-display text-[2rem] leading-none text-[var(--color-ink)]"
               />
-              <span className="section-kicker">Travel Alter Ego</span>
+              <span className="section-kicker">여행 추구미 테스트</span>
             </Link>
             <Link href="/" className="status-chip px-3 py-2">
               홈으로

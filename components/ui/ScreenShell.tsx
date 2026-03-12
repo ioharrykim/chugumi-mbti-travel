@@ -23,7 +23,7 @@ export function ScreenShell({
               className="h-12 w-auto max-w-[7rem] object-contain"
               fallbackClassName="font-display text-[2rem] leading-none text-[var(--color-ink)]"
             />
-            <span className="section-kicker">Travel Alter Ego</span>
+            <span className="section-kicker">여행 추구미 테스트</span>
           </button>
         </header>
 

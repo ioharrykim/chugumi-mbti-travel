@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <StaticPageShell
-      kicker="About Service"
+      kicker="서비스 소개"
       title="추구미 여행 MBTI 소개"
       description="이 서비스는 이미 알고 있는 실제 MBTI와, 여행에서 되고 싶은 이상적인 캐릭터를 비교해보는 테스트입니다. 단순 성격 진단보다 여행 상황 속 선택을 통해 나의 취향과 지향점을 가볍고 재미있게 해석하는 데 초점을 둡니다."
     >

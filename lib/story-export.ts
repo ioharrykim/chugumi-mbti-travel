@@ -362,14 +362,14 @@ function drawHeader(ctx: CanvasRenderingContext2D, fonts: FontFamilies, title: s
   drawAccent(ctx, 376, 150, 78);
 
   drawTextBlock(ctx, {
-    text: 'TRAVEL\nMBTI',
+    text: '여행\nMBTI',
     x: 478,
     y: 118,
     maxWidth: 240,
     maxHeight: 96,
     family: fonts.strong,
-    maxFontSize: 36,
-    minFontSize: 28,
+    maxFontSize: 32,
+    minFontSize: 24,
     fontWeight: 700,
     lineHeightRatio: 1.02,
     letterSpacing: 4,
@@ -384,8 +384,8 @@ function drawHeader(ctx: CanvasRenderingContext2D, fonts: FontFamilies, title: s
     maxWidth: 220,
     maxHeight: 48,
     family: fonts.strong,
-    maxFontSize: 40,
-    minFontSize: 28,
+    maxFontSize: 34,
+    minFontSize: 24,
     fontWeight: 700,
     lineHeightRatio: 1,
     letterSpacing: 3,
@@ -403,8 +403,8 @@ function drawSectionKicker(ctx: CanvasRenderingContext2D, fonts: FontFamilies, l
     maxWidth: 420,
     maxHeight: 50,
     family: fonts.strong,
-    maxFontSize: 34,
-    minFontSize: 24,
+    maxFontSize: 30,
+    minFontSize: 22,
     fontWeight: 700,
     letterSpacing: 4,
     lineHeightRatio: 1.1,
@@ -586,7 +586,7 @@ function renderResultStory(
   brandLogo: BrandLogoAsset,
 ) {
   drawBackground(ctx);
-  drawHeader(ctx, fonts, 'RESULT', brandLogo);
+  drawHeader(ctx, fonts, '결과', brandLogo);
 
   fillRoundedRect(ctx, STORY_MARGIN_X, 304, 912, 720, 74, 'rgba(255,255,255,0.78)', palette.border);
   drawSectionKicker(ctx, fonts, '나의 추구미 결과', 146, 390);
@@ -623,7 +623,7 @@ function renderResultStory(
   drawCodeRow(ctx, fonts, input.chugumiMbti, 838);
 
   fillRoundedRect(ctx, STORY_MARGIN_X, 1052, 912, 520, 68, 'rgba(255,255,255,0.78)', palette.border);
-  drawSectionKicker(ctx, fonts, 'CHARACTER BRIEF', 146, 1130);
+  drawSectionKicker(ctx, fonts, '결과 설명', 146, 1130);
   drawTextBlock(ctx, {
     text: input.resultType.description,
     x: 146,
@@ -639,7 +639,7 @@ function renderResultStory(
   });
 
   fillRoundedRect(ctx, STORY_MARGIN_X, 1604, 912, 194, 56, 'rgba(255,255,255,0.78)', palette.border);
-  drawSectionKicker(ctx, fonts, 'TRAVEL KEYWORDS', 146, 1650);
+  drawSectionKicker(ctx, fonts, '결과 키워드', 146, 1650);
   drawTagFlow(
     ctx,
     fonts,
@@ -657,13 +657,13 @@ function renderCompareStory(
   brandLogo: BrandLogoAsset,
 ) {
   drawBackground(ctx);
-  drawHeader(ctx, fonts, 'COMPARE', brandLogo);
+  drawHeader(ctx, fonts, '비교', brandLogo);
 
   fillRoundedRect(ctx, STORY_MARGIN_X, 304, 912, 604, 74, 'rgba(255,255,255,0.78)', palette.border);
   drawSectionKicker(ctx, fonts, '실제 VS 추구미', 146, 390);
 
   drawMbtiPanel(ctx, fonts, {
-    label: 'ACTUAL',
+    label: '실제 MBTI',
     code: input.actualMbti,
     x: 146,
     y: 500,
@@ -688,7 +688,7 @@ function renderCompareStory(
   });
 
   drawMbtiPanel(ctx, fonts, {
-    label: 'CHUGUMI',
+    label: '추구미 MBTI',
     code: input.chugumiMbti,
     x: 146,
     y: 800,
@@ -699,7 +699,7 @@ function renderCompareStory(
   });
 
   fillRoundedRect(ctx, STORY_MARGIN_X, 940, 912, 370, 68, 'rgba(255,255,255,0.78)', palette.border);
-  drawSectionKicker(ctx, fonts, 'SYNC RATE', 146, 1016);
+  drawSectionKicker(ctx, fonts, '일치율', 146, 1016);
   drawTextBlock(ctx, {
     text: `${input.matchRate}%`,
     x: 146,
@@ -736,7 +736,7 @@ function renderCompareStory(
   });
 
   fillRoundedRect(ctx, STORY_MARGIN_X, 1346, 912, 452, 68, 'rgba(255,255,255,0.78)', palette.border);
-  drawSectionKicker(ctx, fonts, 'AXIS CHECK', 146, 1422);
+  drawSectionKicker(ctx, fonts, '축별 비교', 146, 1422);
 
   const cardWidth = 392;
   const cardHeight = 122;
@@ -775,7 +775,7 @@ function renderCompareStory(
       color: row.changed ? palette.indigo : palette.ink,
     });
     drawTextBlock(ctx, {
-      text: row.changed ? 'CHANGE' : 'SAME',
+      text: row.changed ? '변화' : '유지',
       x: cardX + 236,
       y: cardY + 46,
       maxWidth: 132,
@@ -799,7 +799,7 @@ function renderGuideStory(
   brandLogo: BrandLogoAsset,
 ) {
   drawBackground(ctx);
-  drawHeader(ctx, fonts, 'GUIDE', brandLogo);
+  drawHeader(ctx, fonts, '가이드', brandLogo);
 
   fillRoundedRect(ctx, STORY_MARGIN_X, 304, 912, 292, 74, 'rgba(255,255,255,0.78)', palette.border);
   drawSectionKicker(ctx, fonts, '성장 가이드', 146, 386);

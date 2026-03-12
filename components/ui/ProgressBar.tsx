@@ -5,11 +5,11 @@ export function ProgressBar({ value, total }: { value: number; total: number }) 
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <p className="section-kicker">Journey Progress</p>
-          <p className="type-stat mt-2 text-[var(--color-ink)]">{percentage}% boarded</p>
+          <p className="section-kicker">진행 현황</p>
+          <p className="type-stat mt-2 text-[var(--color-ink)]">{percentage}% 완료</p>
         </div>
         <div className="glass-card rounded-[20px] px-4 py-3 text-right">
-          <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.45)]">answered</p>
+          <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.45)]">응답 수</p>
           <p className="type-stat mt-1 text-[var(--color-ink)]">{value}/{total}</p>
         </div>
       </div>

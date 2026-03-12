@@ -16,7 +16,7 @@ export default async function ResultTypeIndexPage() {
 
   return (
     <StaticPageShell
-      kicker="Travel Archetypes"
+      kicker="유형 아카이브"
       title="추구미 여행 MBTI 유형 모아보기"
       description="검색 유입과 공유 링크를 위해 모든 결과 유형을 고정 페이지로 정리했습니다. 각 유형 페이지는 결과 특징, 해시태그, 설명을 개별 URL로 확인할 수 있습니다."
     >

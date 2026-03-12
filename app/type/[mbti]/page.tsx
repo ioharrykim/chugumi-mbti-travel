@@ -78,7 +78,7 @@ export default async function ResultTypeDetailPage({
 
   return (
     <StaticPageShell
-      kicker="Type Detail"
+      kicker="유형 상세"
       title={`${resultType.mbti_code} · ${resultType.title}`}
       description={`${resultType.sub} 유형의 상세 페이지입니다. 검색이나 공유 링크로 들어온 사용자가 결과 의미를 바로 이해할 수 있도록 설명과 키워드를 고정 URL로 제공합니다.`}
     >
@@ -86,7 +86,7 @@ export default async function ResultTypeDetailPage({
         <section className="premium-card rounded-[32px] px-5 py-6">
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-3">
-              <p className="section-kicker">Travel Result</p>
+              <p className="section-kicker">결과 카드</p>
               <h2 className="font-display text-[2rem] leading-[0.98] text-[var(--color-ink)] break-keep">
                 {resultType.title}
               </h2>
@@ -111,7 +111,7 @@ export default async function ResultTypeDetailPage({
 
           <div className="mt-5 rounded-[24px] bg-[rgba(85,182,255,0.1)] px-4 py-4">
             <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.42)]">
-              travel keywords
+              결과 키워드
             </p>
             <p className="mt-3 break-keep text-lg font-strong leading-[1.35] text-[var(--color-secondary)]">
               {resultType.hashtags}
@@ -138,7 +138,7 @@ export default async function ResultTypeDetailPage({
 
         <section className="space-y-4">
           <div>
-            <p className="section-kicker">More Types</p>
+            <p className="section-kicker">다른 유형</p>
             <h2 className="mt-2 font-display text-[1.5rem] leading-[1.06] text-[var(--color-ink)]">
               다른 결과도 같이 보기
             </h2>

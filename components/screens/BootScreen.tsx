@@ -7,8 +7,8 @@ export function BootScreen() {
       <div className="relative space-y-6">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-3">
-            <span className="status-chip">Preparing Boarding</span>
-            <p className="section-kicker">loading your custom travel dossier</p>
+            <span className="status-chip">탑승 준비 중</span>
+            <p className="section-kicker">맞춤 문구를 불러오고 있어요</p>
           </div>
           <div className="glass-card flex h-20 w-20 items-center justify-center rounded-[28px] text-5xl plane-wiggle">
             ✈️
@@ -17,7 +17,7 @@ export function BootScreen() {
 
         <div className="space-y-3">
           <p className="font-strong text-sm uppercase tracking-[0.42em] text-[rgba(16,21,47,0.45)]">
-            CMS SYNC
+            CMS 동기화
           </p>
           <h1 className="type-hero text-[var(--color-ink)]">
             추구미 여행

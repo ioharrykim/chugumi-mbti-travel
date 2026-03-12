@@ -60,7 +60,7 @@ export function MbtiInputScreen({
                 ← 메인으로
               </button>
               <div>
-                <span className="status-chip">Passport Control</span>
+                <span className="status-chip">여권 심사</span>
                 <h2 className="mt-4 font-display text-[1.88rem] leading-[0.98] text-[var(--color-ink)]">
                   {content.passportTitle}
                 </h2>
@@ -70,14 +70,14 @@ export function MbtiInputScreen({
             </div>
             <div className="glass-card rounded-[24px] px-4 py-3 text-right">
               <p className="font-strong text-xs uppercase tracking-[0.24em] text-[rgba(16,21,47,0.42)]">
-                issued
+                발급 연도
               </p>
               <p className="mt-2 font-display text-[2rem] leading-none text-[var(--color-secondary)]">2026</p>
             </div>
           </div>
 
           <div className="glass-card rounded-[28px] p-5">
-            <p className="section-kicker">Passport Guide</p>
+            <p className="section-kicker">입력 가이드</p>
             <p className="type-body mt-4 text-[rgba(16,21,47,0.68)]">
               각 축에서 현재의 나를 고르면 아래 패스포트 번호가 바로 업데이트됩니다. 네 칸을 모두 채워야 탑승
               수속을 완료할 수 있습니다.
@@ -90,7 +90,7 @@ export function MbtiInputScreen({
                 <div className="mb-4 flex items-center justify-between gap-3">
                   <p className="font-display text-[1.2rem] leading-[1.12] text-[var(--color-ink)] break-keep">{group.label}</p>
                   <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.38)]">
-                    choose 1 of 2
+                    둘 중 하나 선택
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
@@ -110,7 +110,7 @@ export function MbtiInputScreen({
                       >
                         <span className="font-display text-[2.35rem] leading-none text-[var(--color-ink)]">{letter}</span>
                         <span className="mt-2 block font-strong text-xs uppercase tracking-[0.2em] text-[rgba(16,21,47,0.42)]">
-                          {active ? 'selected' : 'select'}
+                          {active ? '선택됨' : '선택'}
                         </span>
                       </button>
                     );
@@ -126,10 +126,10 @@ export function MbtiInputScreen({
         <div className="passport-code rounded-[30px] p-4 text-white shadow-[0_24px_44px_rgba(7,16,32,0.26)]">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="font-strong text-xs uppercase tracking-[0.26em] text-white/56">Passport Number</p>
+              <p className="font-strong text-xs uppercase tracking-[0.26em] text-white/56">현재 MBTI 코드</p>
               <p className="mt-2 font-body text-sm text-white/72">선택할 때마다 아래 번호가 바로 찍힙니다.</p>
             </div>
-            <span className="status-chip border-white/16 bg-white/10 text-white">Identity</span>
+            <span className="status-chip border-white/16 bg-white/10 text-white">내 여권</span>
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2.5">

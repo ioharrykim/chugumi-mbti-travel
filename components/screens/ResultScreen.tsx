@@ -61,7 +61,7 @@ function PassportStamp() {
 function MatchMeter({ value }: { value: number }) {
   return (
     <div className="glass-card rounded-[28px] p-5">
-      <p className="section-kicker">Sync Rate</p>
+      <p className="section-kicker">일치율</p>
       <div className="mt-4 h-4 overflow-hidden rounded-full bg-white/72">
         <div
           className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-coral),var(--color-primary),var(--color-secondary))] transition-all duration-500"
@@ -93,7 +93,7 @@ export function ResultScreen({
   adsEnabled: boolean;
   onRetry: () => void;
 }) {
-  const [shareState, setShareState] = useState<'idle' | 'copied'>('idle');
+  const [shareState, setShareState] = useState<'idle' | 'copied' | 'failed'>('idle');
   const [isGeneratingStories, setIsGeneratingStories] = useState(false);
   const [storyImages, setStoryImages] = useState<StoryExportImage[]>([]);
 
@@ -133,8 +133,13 @@ export function ResultScreen({
       }
     }
 
-    await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
-    setShareState('copied');
+    try {
+      await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+      setShareState('copied');
+    } catch {
+      setShareState('failed');
+    }
+
     window.setTimeout(() => setShareState('idle'), 1800);
   };
 
@@ -182,7 +187,7 @@ export function ResultScreen({
         <div className="relative space-y-6">
           <div className="flex items-start justify-between gap-4">
             <div className="max-w-[14rem]">
-              <p className="section-kicker">Your travel alter ego</p>
+              <p className="section-kicker">나의 여행 추구미</p>
               <h2 className="mt-3 font-display text-[1.68rem] leading-[1.02] text-[var(--color-ink)] break-keep">
                 {resultType.title}
               </h2>
@@ -200,7 +205,7 @@ export function ResultScreen({
           <div className="grid gap-3">
             <div className="glass-card rounded-[26px] p-5">
               <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.4)]">
-                character brief
+                결과 설명
               </p>
               <p className="mt-3 font-display text-[1.28rem] leading-[1.16] text-[var(--color-ink)] break-keep">
                 {resultType.sub}
@@ -216,7 +221,7 @@ export function ResultScreen({
 
             <div className="glass-card rounded-[26px] p-5">
               <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.4)]">
-                travel keywords
+                결과 키워드
               </p>
               <p className="mt-3 break-keep font-strong text-[1.22rem] leading-[1.28] text-[var(--color-ink)]">
                 {resultType.hashtags}
@@ -235,7 +240,7 @@ export function ResultScreen({
 
       <div className="premium-card rounded-[38px] px-6 py-7">
         <SectionTitle
-          kicker="Reality Check"
+          kicker="비교 리포트"
           title="실제 vs 추구미"
           subtitle="어느 축을 유지하고, 어느 축을 더 세게 밀고 싶은지 한눈에 볼 수 있게 정리했습니다."
         />
@@ -243,12 +248,12 @@ export function ResultScreen({
         <div className="mt-5 grid gap-4">
           <div className="grid gap-4">
             <div className="glass-card rounded-[26px] p-5 text-center">
-              <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.42)]">Actual</p>
+              <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.42)]">실제 MBTI</p>
               <p className="mt-3 font-display text-[2.4rem] leading-none text-[var(--color-ink)]">{actualMbti}</p>
             </div>
             <div className="mx-auto font-display text-4xl text-[var(--color-coral)]">→</div>
             <div className="glass-card rounded-[26px] p-5 text-center">
-              <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.42)]">Chugumi</p>
+              <p className="font-strong text-xs uppercase tracking-[0.22em] text-[rgba(16,21,47,0.42)]">추구미 MBTI</p>
               <p className="mt-3 font-display text-[2.4rem] leading-none text-[var(--color-secondary)]">
                 {chugumiMbti}
               </p>
@@ -271,7 +276,7 @@ export function ResultScreen({
                           : 'bg-[rgba(16,21,47,0.06)] text-[rgba(16,21,47,0.52)]'
                       }`}
                     >
-                      {row.changed ? 'change' : 'same'}
+                      {row.changed ? '변화' : '유지'}
                     </span>
                   </div>
                   <div className="mt-4 flex items-center justify-center gap-3 font-display text-[1.75rem]">
@@ -290,7 +295,7 @@ export function ResultScreen({
 
       <div className="premium-card rounded-[38px] px-6 py-7">
         <SectionTitle
-          kicker="Field Guide"
+          kicker="변화 가이드"
           title="성장 가이드"
           subtitle="바뀐 축만 골라 실제 여행에서 바로 써먹을 수 있게 행동 레벨로 정리했습니다."
         />
@@ -362,7 +367,11 @@ export function ResultScreen({
             onClick={handleShare}
             className="primary-button rounded-[24px] px-5 py-4 font-strong text-base"
           >
-            {shareState === 'copied' ? '복사 완료!' : '결과 공유하기'}
+            {shareState === 'copied'
+              ? '링크 복사 완료!'
+              : shareState === 'failed'
+                ? '공유 실패, 다시 시도'
+                : '결과 공유하기'}
           </button>
           <button
             type="button"
@@ -377,7 +386,7 @@ export function ResultScreen({
       {storyImages.length ? (
         <div className="premium-card rounded-[38px] px-6 py-6">
           <SectionTitle
-            kicker="Story Export"
+            kicker="스토리 저장"
             title="저장용 스토리 3장"
             subtitle="인스타그램 스토리에 바로 올릴 수 있도록 9:16 비율로 생성했습니다."
           />

@@ -19,8 +19,8 @@ export function IntroScreen({ content, onStart }: { content: IntroContentMap; on
       <div className="relative space-y-8">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-3">
-            <span className="status-chip">Now Boarding</span>
-            <p className="section-kicker">travel identity test</p>
+            <span className="status-chip">탑승 시작</span>
+            <p className="section-kicker">여행 캐릭터 테스트</p>
           </div>
           <div className="glass-card flex h-20 w-20 items-center justify-center rounded-[28px] text-5xl plane-wiggle">
             {content.heroEmoji}
@@ -48,7 +48,7 @@ export function IntroScreen({ content, onStart }: { content: IntroContentMap; on
                   {index + 1}
                 </div>
                 <div>
-                  <p className="font-strong text-xs uppercase tracking-[0.24em] text-[rgba(16,21,47,0.4)]">Step 0{index + 1}</p>
+                  <p className="font-strong text-xs uppercase tracking-[0.24em] text-[rgba(16,21,47,0.4)]">단계 0{index + 1}</p>
                   <p className="mt-1 font-body text-[0.95rem] leading-6 text-[rgba(16,21,47,0.74)]">{step}</p>
                 </div>
               </div>
@@ -59,8 +59,8 @@ export function IntroScreen({ content, onStart }: { content: IntroContentMap; on
         <div className="glass-card rounded-[28px] p-4">
           <div className="flex flex-col gap-4">
             <div>
-              <p className="section-kicker">Departure Window</p>
-              <p className="type-card-title mt-2 text-[var(--color-ink)]">2-3 min ritual</p>
+              <p className="section-kicker">예상 소요 시간</p>
+              <p className="type-card-title mt-2 text-[var(--color-ink)]">2~3분 안에 끝나요</p>
               <p className="type-caption mt-2 text-[rgba(16,21,47,0.62)]">{content.duration}</p>
             </div>
             <button
